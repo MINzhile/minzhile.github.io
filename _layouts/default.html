@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }} · {{ site.subtitle | escape }}</title>
+  <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <meta name="theme-color" content="#254653">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <link rel="stylesheet" href="{{ "/assets/site.css" | relative_url }}">
+  <link rel="icon" href="{{ "/assets/favicon.svg" | relative_url }}" type="image/svg+xml">
+</head>
+<body class="{% if page.home %}home{% else %}inside{% endif %}">
+  <a class="skip-link" href="#main">跳到正文</a>
+  {% unless page.home %}
+  <header class="inner-header wrap">
+    <a class="wordmark" href="{{ "/" | relative_url }}">MIN<span>zhi</span>le<span class="wordmark-dot">.</span></a>
+    <nav aria-label="主导航"><a href="{{ "/#about" | relative_url }}">关于</a><a href="{{ "/#thoughts" | relative_url }}">感悟</a><a href="{{ "/#journey" | relative_url }}">旅程</a><a href="{{ "/#archives" | relative_url }}">归档</a></nav>
+  </header>
+  {% endunless %}
+  {{ content }}
+  <footer class="footer wrap">
+    <div><a class="footer-name" href="{{ "/" | relative_url }}">MINzhile</a><span>行旅随记</span></div>
+    <p>© {{ site.time | date: "%Y" }} MINzhile <span class="footer-separator">/</span> <a href="https://github.com/MINzhile" rel="me">GitHub ↗</a> <span class="footer-separator">/</span> <a href="#top">回到顶部 ↑</a></p>
+  </footer>
+</body>
+</html>
