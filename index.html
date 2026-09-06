@@ -1,0 +1,66 @@
+---
+layout: default
+home: true
+---
+<header class="hero" id="top">
+  <img class="hero-image" src="{{ '/assets/lake-dawn.png' | relative_url }}" width="1672" height="941" alt="晨光落在平静的湖面上，远山层叠，一叶小舟停在水边。" fetchpriority="high">
+  <div class="hero-content">
+    <p class="hero-kicker">记录感悟，也记录一路走来的自己</p>
+    <a class="hero-wordmark" href="{{ '/' | relative_url }}" aria-label="MINzhile 首页">MIN<span>zhi</span>le<span class="wordmark-dot">.</span></a>
+    <p class="hero-subtitle">行 旅 随 记</p>
+    <nav class="hero-nav" aria-label="主导航">
+      <a href="#about">关于我</a><a href="#thoughts">人生感悟</a><a href="#journey">人生旅程</a><a href="#archives">归档</a>
+    </nav>
+  </div>
+  <div class="hero-bottom"><span>PERSONAL NOTES & LIFE JOURNEYS</span><a href="#about" aria-label="向下阅读关于我">向下阅读 <span aria-hidden="true">↓</span></a></div>
+</header>
+<main id="main">
+  <div class="image-caption wrap">晨湖与远山 · AI 生成的山水意象</div>
+  <section id="about" class="section wrap">
+    <div class="section-heading"><span class="section-index">01 / ABOUT</span><h1>关于我</h1></div>
+    <div class="section-body">
+      <div class="about-grid">
+        <div class="prose">
+          <p class="eyebrow">你好，这里是 MINzhile。</p>
+          <p class="lead">给人生的感悟，<br>和走过的旅程，留一个地方。</p>
+          <p>我想在这里记录自己的人生感悟，也记录人生旅程。那些重要的时刻、想慢慢想清楚的问题，都可以在这里留下文字。</p>
+          <p>名字里的 <strong>MIN</strong> 与 <strong>zhi</strong>，来自两位重要的人名字中的一个字。把它们放在一起，也把这份意义留在这个小小的网站里。</p>
+          <a class="text-link" href="#thoughts">从一篇随记开始 <span aria-hidden="true">↗</span></a>
+        </div>
+        <aside class="name-note" aria-label="名字的意义"><span class="note-label">THE NAME</span><div class="name-pair"><span>MIN</span><b>+</b><span>zhi</span></div><p>两个名字的片段<br>一份想要珍藏的意义</p><span class="note-rule" aria-hidden="true"></span><p class="small-note">在文字里，留下联系。<br>在时光里，慢慢积累。</p></aside>
+      </div>
+    </div>
+  </section>
+  <section id="thoughts" class="section wrap">
+    <div class="section-heading"><span class="section-index">02 / THOUGHTS</span><h2>人生感悟</h2></div>
+    <div class="section-body">
+      <p class="section-intro">把一时的感受写下来，留给日后的自己。</p>
+      {% assign thoughts = site.posts | where: 'category', '感悟' %}
+      {% if thoughts.size > 0 %}
+      <div class="post-list">{% for post in thoughts limit: 5 %}<article class="post-row"><div class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time><span>{{ post.category }}</span></div><div><h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3><p>{{ post.description | escape }}</p></div><a class="post-arrow" href="{{ post.url | relative_url }}" aria-label="阅读：{{ post.title | escape }}">↗</a></article>{% endfor %}</div>
+      {% else %}<p class="empty-note">第一篇感悟，留待落笔。</p>{% endif %}
+      <a class="text-link" href="#archives">查看全部文字 <span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+  <section id="journey" class="journey-band">
+    <div class="section wrap">
+      <div class="section-heading"><span class="section-index">03 / JOURNEY</span><h2>人生旅程</h2></div>
+      <div class="section-body">
+        <p class="lead">走过的路，<br>也值得回头看看。</p>
+        <p class="section-intro">把经历写成故事，把记忆留给时间。</p>
+        {% assign journeys = site.posts | where: 'category', '旅程' %}
+        {% if journeys.size > 0 %}<div class="post-list">{% for post in journeys limit: 5 %}<article class="post-row"><div class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time><span>旅程</span></div><div><h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3><p>{{ post.description | escape }}</p></div><a class="post-arrow" href="{{ post.url | relative_url }}" aria-label="阅读：{{ post.title | escape }}">↗</a></article>{% endfor %}</div>
+        {% else %}<div class="journey-empty"><span class="empty-mark" aria-hidden="true">↗</span><div><h3>故事，从这里慢慢展开。</h3><p>这里还没有发布旅程记录。</p></div></div>{% endif %}
+      </div>
+    </div>
+  </section>
+  <section id="archives" class="section wrap archives-section">
+    <div class="section-heading"><span class="section-index">04 / ARCHIVES</span><h2>归档</h2></div>
+    <div class="section-body">
+      <p class="section-intro">文字按时间存放，也让每一次回望都有迹可循。</p>
+      {% assign by_year = site.posts | group_by_exp: 'post', "post.date | date: '%Y'" %}
+      {% for year in by_year %}<div class="archive-year"><h3>{{ year.name }}<span>{{ year.items.size }} 篇</span></h3><ul>{% for post in year.items %}<li><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%m.%d' }}</time><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><span>{{ post.category }}</span></li>{% endfor %}</ul></div>{% endfor %}
+    </div>
+  </section>
+</main>
+

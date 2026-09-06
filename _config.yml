@@ -1,0 +1,22 @@
+title: MINzhile
+subtitle: 行旅随记
+description: 记录人生感悟，也记录走过的人生旅程。
+url: https://minzhile.github.io
+baseurl: ""
+lang: zh-CN
+timezone: Asia/Shanghai
+markdown: kramdown
+permalink: /notes/:year/:month/:day/:title/
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - ASSETS.md
+  - writing-template.md
+
