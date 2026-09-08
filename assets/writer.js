@@ -18,6 +18,9 @@
     $('writer-preview').hidden = true;
     $('writer-status').textContent = '内容已修改，请重新检查并预览。';
     $('download-status').textContent = '';
+    $('generated-file').hidden = true;
+    $('generated-name').value = '';
+    $('generated-source').value = '';
   }
   form.addEventListener('input', invalidate);
   form.addEventListener('submit', event => {
@@ -46,8 +49,12 @@
   $('download-note').addEventListener('click', () => {
     if (!checked || !$('public-consent').checked) return;
     const filename = `${checked.date}-note-${Date.now()}.md`;
-    const url = URL.createObjectURL(new Blob([WriterChecks.markdown(checked)],{type:'text/markdown;charset=utf-8'}));
-    const link = document.createElement('a');link.href=url;link.download=filename;link.click();
+    const source = WriterChecks.markdown(checked);
+    $('generated-name').value = filename;
+    $('generated-source').value = source;
+    $('generated-file').hidden = false;
+    const url = URL.createObjectURL(new Blob([source],{type:'text/markdown;charset=utf-8'}));
+    const link = document.createElement('a');link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
     setTimeout(()=>URL.revokeObjectURL(url),1000);
     $('download-status').textContent = `已生成 ${filename}。请在浏览器下载记录中确认保存；文章尚未上传或发布。`;
   });

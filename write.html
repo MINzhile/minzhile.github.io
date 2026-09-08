@@ -27,6 +27,7 @@ writer: true
     <label class="writer-consent"><input id="public-consent" type="checkbox">我已核对正文、照片和他人信息，确认这份文章可以对所有人公开。</label>
     <button id="download-note" type="button" disabled>下载文章文件</button>
     <p id="download-status" role="status" aria-live="polite"></p>
+    <details id="generated-file" hidden><summary>没有下载成功？复制文章内容</summary><p class="writer-help">在 GitHub 的 _posts 文件夹选择 Add file → Create new file，使用下方文件名，粘贴完整内容后提交。</p><label for="generated-name">文件名</label><input id="generated-name" readonly><label for="generated-source">完整文章内容</label><textarea id="generated-source" readonly rows="12"></textarea></details>
     <p>下载后，<a class="text-link" href="https://github.com/MINzhile/minzhile.github.io/upload/main/_posts" target="_blank" rel="noopener noreferrer">到 GitHub 上传文章 ↗</a>，选择下载的文件，再点击 <strong>Commit changes</strong> 确认。等待发布完成后刷新首页。</p>
     <p class="writer-note">检查只针对格式与常见模板错误，不能自动判断所有隐私问题。上传到公开仓库后，源文件和提交历史也可能被访问。</p>
   </section>
