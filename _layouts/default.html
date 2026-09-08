@@ -5,6 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }} · {{ site.subtitle | escape }}</title>
   <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <meta property="og:site_name" content="{{ site.title | escape }} · {{ site.subtitle | escape }}">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ page.title | default: site.title | escape }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description | escape }}">
+  {% if page.layout == 'post' %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+  {% if page.writer %}<meta name="robots" content="noindex, nofollow">{% endif %}
   <meta name="theme-color" content="#254653">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   <link rel="stylesheet" href="{{ "/assets/site.css" | relative_url }}">
@@ -21,7 +32,7 @@
   {{ content }}
   <footer class="footer wrap">
     <div><a class="footer-name" href="{{ "/" | relative_url }}">MINzhile</a><span>行旅随记</span></div>
-    <p>© {{ site.time | date: "%Y" }} MINzhile <span class="footer-separator">/</span> <a href="https://github.com/MINzhile" rel="me">GitHub ↗</a> <span class="footer-separator">/</span> <a href="#top">回到顶部 ↑</a></p>
+    <p>© {{ site.time | date: "%Y" }} MINzhile <span class="footer-separator">/</span> <a href="https://github.com/MINzhile" rel="me">GitHub ↗</a> <span class="footer-separator">/</span> <a href="#top">回到顶部 ↑</a> <span class="footer-separator">/</span> <a href="{{ "/write/" | relative_url }}">发布助手</a></p>
   </footer>
 </body>
 </html>

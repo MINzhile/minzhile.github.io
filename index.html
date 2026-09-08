@@ -3,7 +3,7 @@ layout: default
 home: true
 ---
 <header class="hero" id="top">
-  <img class="hero-image" src="{{ '/assets/lake-dawn.png' | relative_url }}" width="1672" height="941" alt="晨光落在平静的湖面上，远山层叠，一叶小舟停在水边。" fetchpriority="high">
+  <img class="hero-image" src="{{ '/assets/lake-dawn.webp' | relative_url }}" srcset="{{ '/assets/lake-dawn-small.webp' | relative_url }} 800w, {{ '/assets/lake-dawn.webp' | relative_url }} 1672w" sizes="100vw" width="1672" height="941" alt="晨光落在平静的湖面上，远山层叠，一叶小舟停在水边。" fetchpriority="high">
   <div class="hero-content">
     <p class="hero-kicker">记录感悟，也记录一路走来的自己</p>
     <a class="hero-wordmark" href="{{ '/' | relative_url }}" aria-label="MINzhile 首页">MIN<span>zhi</span>le<span class="wordmark-dot">.</span></a>
@@ -51,6 +51,7 @@ home: true
         {% assign journeys = site.posts | where: 'category', '旅程' %}
         {% if journeys.size > 0 %}<div class="post-list">{% for post in journeys limit: 5 %}<article class="post-row"><div class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time><span>旅程</span></div><div><h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3><p>{{ post.description | escape }}</p></div><a class="post-arrow" href="{{ post.url | relative_url }}" aria-label="阅读：{{ post.title | escape }}">↗</a></article>{% endfor %}</div>
         {% else %}<div class="journey-empty"><span class="empty-mark" aria-hidden="true">↗</span><div><h3>故事，从这里慢慢展开。</h3><p>这里还没有发布旅程记录。</p></div></div>{% endif %}
+        <a class="text-link" href="#archives">查看全部旅程与文字 <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>

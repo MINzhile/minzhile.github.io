@@ -7,6 +7,6 @@ layout: default
     <header class="article-header"><p class="eyebrow">{{ page.category | escape }} <span aria-hidden="true">/</span> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y 年 %m 月 %d 日" }}</time></p><h1>{{ page.title | escape }}</h1><p class="article-description">{{ page.description | escape }}</p></header>
     <div class="article-body prose">{{ content }}</div>
     <div class="article-end"><span aria-hidden="true">—</span><p>MINzhile · 行旅随记</p></div>
-    <nav class="article-navigation" aria-label="文章导航">{% if page.previous.url %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | escape }}</a>{% endif %}{% if page.next.url %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} →</a>{% endif %}<a href="{{ "/#thoughts" | relative_url }}">回到首页 →</a></nav>
+    <nav class="article-navigation" aria-label="文章导航">{% if page.previous.url %}<a href="{{ page.previous.url | relative_url }}">← {{ page.previous.title | escape }}</a>{% endif %}{% if page.next.url %}<a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} →</a>{% endif %}<a href="{{ "/" | relative_url }}">回到首页 →</a></nav>
   </article>
 </main>
